@@ -1,0 +1,45 @@
+body {
+  background-color: white;
+  background-repeat: no-repeat;
+  
+  background-image: url("https://images.bonnier.cloud/files/his/production/2019/09/09055420/hitler-6mvg9zfxunnl8jjumuftta.jpg");
+}
+
+
+h1 {
+  text-decoration: overline;
+  font-size: 50px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: navy;
+  text-align: right;
+  
+}
+p{
+  
+  
+  font-size: 20px;
+    color: rgb(117, 34, 34)  ;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: justify;
+  text-align: center;
+  }
+p1{
+
+
+font-size: 20px;
+  color: black  ;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-left: 20px;
+  margin-right: auto;
+  
+}
+
+table, th, td {
+  margin-left: 1000px;
+  border: 1px ;
+}

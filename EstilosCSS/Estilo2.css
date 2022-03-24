@@ -1,0 +1,45 @@
+body {
+    background-color: rgb(98, 91, 192);
+    
+  
+  }
+  
+  
+  h1 {
+    font-size: 70px;
+    font-family:fantasy;
+    color: rgb(255, 0, 140);
+    text-align: center;
+    
+  }
+  
+  p{
+  
+  
+  font-size: 20px;
+    color: rgb(255, 61, 197)  ;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: justify;
+  text-align: center;
+  }
+  
+ 
+  
+  table, th {
+    
+margin:auto;
+    border: 1px ;
+  }
+li{
+    font-size: 25px;
+    color: rgb(255, 61, 197)  ;
+    text-align: justify;
+    text-align: center;
+}
+  ol {
+    font-size: 20px;
+    color: rgb(255, 61, 197)  ;
+    text-align: justify;
+    text-align: center;
+  }
+  
