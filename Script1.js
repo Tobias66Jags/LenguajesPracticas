@@ -26,10 +26,10 @@ while (j < 10) {
 x = 2;
 y = 18;
 if (x > y) {
-  document.writeln("x es mayor que y");
+  document.writeln("x es mayor que y"+ "<br>");
 
 }else {
-  document.writeln("y es mayor que x");
+  document.writeln("y es mayor que x"+ "<br>");
 }
   
 document.writeln("------------------- uso de variables locales ---------------------"+ "<br>");
@@ -41,5 +41,26 @@ function myFunction() {
   var b = 5;
  var c = a*b;
  document.writeln(c);
+}
+
+//captura de datos
+
+function capturaDatos(){
+  var nombredelvato=document.getElementById("nomest").value;
+  var edadelvato=document.getElementById("edadelvato").value;
+  if(nombredelvato == ""){
+    alert("El nombre es obligatorio");
+    document.getElementById("nomest").focus();
+  }else if(edadelvato == ""){
+    alert("El numero es obligatorio");
+    document.getElementById("edadelvato").focus();
+  } else{
+    console.log(nombredelvato + " " + edadelvato);
+    document.getElementById("nomest").value="";
+    document.getElementById("edadelvato").value="";
+    document.getElementById("nomest").focus();
+  }
+  
+
 }
   
