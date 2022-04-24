@@ -27,12 +27,12 @@ public class Practica4 : MonoBehaviour
         Debug.Log("m * n:");
        Debug.Log(m.Multiplica(n));
        */
-        double x =  Random.value * 20;
+     /*   double x =  Random.value * 20;
         Debug.Log("m * " + x + ":\n");
         Debug.Log(m.Multiplica(x));
-       /* Debug.Log("det(m): " +
+        Debug.Log("det(m): " +
                           m.Determinante() + " \n");
-
+     */
         Matriz2x2 i = m.Inversa();
         Debug.Log("m⁻¹:");
         if (i == null) {
@@ -43,7 +43,7 @@ public class Practica4 : MonoBehaviour
             Debug.Log("m * m⁻¹:");
             Debug.Log(id);
         }
-
+/*
         int p = 1 + Mathf.RoundToInt(Random.value * 10);
         Debug.Log("mⁿ (n = " + p + "):\n");
         Debug.Log(m.Potencia(p));*/

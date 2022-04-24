@@ -130,10 +130,18 @@ public class Matriz2x2
      * @return La inversa de la matriz de 2×2, o <tt>null</tt> si la matriz no
      *         es inversible.
      */
-  /* public Matriz2x2 Inversa() {
+  public Matriz2x2 Inversa() {
         double det = Determinante();
+
+        Matriz2x2 traspuesta = new Matriz2x2(d,-b ,-c ,a );
+        Matriz2x2 inversa = new Matriz2x2(d/det,-b/det ,-c/det ,a/det );
+        return inversa;
+
+
         if (det == 0.0)
             return null;
+
+
         // Aquí va su código.
     }
 
