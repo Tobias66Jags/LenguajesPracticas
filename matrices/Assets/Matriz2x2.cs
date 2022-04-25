@@ -158,7 +158,7 @@ public class Matriz2x2
      *          menor que 2, regresa una copia de la matriz de 2×2.
      * @return la <em>n</em>-ésima potencia de la matriz de 2×2.
      */
-  /*  public Matriz2x2 Potencia(int n) {
+    public Matriz2x2 Potencia(int n) {
         Matriz2x2 m = new Matriz2x2(a, b, c, d);
         if (n < 2)
             return m;
