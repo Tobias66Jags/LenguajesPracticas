@@ -182,6 +182,15 @@ public class Matriz2x2
         if (!(o.GetType() == typeof(Matriz2x2)))
             return false;
         Matriz2x2 m = (Matriz2x2)o;
+          if ((a ==m.GetA()) &&(b == m.GetC())&& (a == m.GetB()) && (b == m.GetD()))
+        {
+            return true;
+
+        }
+        else
+        {
+            return false; 
+        }
         // Aquí va su código.
     }
 
