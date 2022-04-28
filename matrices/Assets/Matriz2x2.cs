@@ -176,13 +176,13 @@ public class Matriz2x2
      * @return <tt>true</tt> si el objeto o es una matrix de 2×2 igual a la que
      *         manda llamar al método; <tt>false</tt> en otro caso.
      */
-  /*  public override bool Equals(System.Object o) {
+    public override bool Equals(System.Object o) {
         if (o == null)
             return false;
         if (!(o.GetType() == typeof(Matriz2x2)))
             return false;
         Matriz2x2 m = (Matriz2x2)o;
-          if ((a ==m.GetA()) &&(b == m.GetC())&& (a == m.GetB()) && (b == m.GetD()))
+          if ((a ==m.GetA()) &&(b == m.GetB())&& (c == m.GetC()) && (d == m.GetD()))
         {
             return true;
 
