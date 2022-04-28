@@ -139,3 +139,4 @@ Received Import Request.
 Start importing Assets/Matriz2x2.cs using Guid(290a553aac6f11e408895bfc06b78fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec806ccca7b8bce09888b3886c2a00b5') in 0.025237 seconds 
   Import took 0.027715 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
