@@ -14,7 +14,60 @@
 
 <script type="text/javascript">
 
+class Example extends Phaser.Scene
+{
+    constructor ()
+    {
+        super();
+        this.i = 0;
+    }
+
+    preload ()
+    {
+        this.load.spritesheet('balls', 'assets/bomb.png', { frameWidth: 17, frameHeight: 17 });
+    }
+
+    create ()
+    {
+        this.rect = new Phaser.Geom.Rectangle(64, 32, 100, 512);
+
+        this.group = this.add.group({ key: 'balls', frame: [0,1,2,3,4,5], frameQuantity: 10 });
+        this.tweens.add({
+            targets: this.rect,
+            x: 200,
+            y: 200,
+            width: 512,
+            height: 100,
+            delay: 2000,
+            duration: 3000,
+            ease: 'Sine.easeInOut',
+            repeat: -1,
+            yoyo: true
+        });
+    }
+
+    update ()
+    {
+        Phaser.Actions.PlaceOnRectangle(this.group.getChildren(), this.rect, this.i);
+
+        this.i++;
+        if (this.i === this.group.length)
+        {
+            this.i = 0;
+        }
+    }
+}
+
 var config = {
+    /*
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    parent: 'phaser-example',
+    scene: [ Example ]
+    */
+
+    
     type: Phaser.AUTO,
     width: 800,
     height: 600,
@@ -26,14 +79,19 @@ var config = {
         }
     },
     scene: {
+        //constructor: constructor,
         preload: preload,
         create: create,
         update: update
     }
+    
 };
 
 var player;
 var stars;
+var patt;
+var pattCircleJr;
+var patCirTween;
 var bombs;
 var platforms;
 var cursors;
@@ -46,7 +104,7 @@ var game = new Phaser.Game(config);
 function bulletGenerator1(th){
     th.rect = new Phaser.Geom.Rectangle(64, 52, 100, 512);
 
-th.group = th.add.group({ key: 'bombs', frame: [0,1,2,3,4,5], frameQuantity: 2 });
+th.group = th.add.group({ key: 'bombs', frame: [0,1,2,3,4,5], frameQuantity: 1 });
 th.tweens.add({
     targets: this.rect,
     x: 300,
@@ -60,6 +118,12 @@ th.tweens.add({
     yoyo: true
 });
 }
+/*
+    function constructor () {
+        super();
+        this.i = 0;
+    }*/
+
 function preload ()
 {
 
@@ -68,6 +132,10 @@ function preload ()
     this.load.image('star', 'assets/stard.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+
+    this.load.spritesheet('balls', 'assets/bomb.png', { frameWidth: 17, frameHeight: 17 });
+
+    this.load.image('ball', 'assets/bomb.png');
 }
 
 function numeroAleatorioDecimales(min, max) {
@@ -158,6 +226,44 @@ function create ()
     this.physics.add.overlap(player, stars, collectStar, null, this);
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
+
+
+
+
+
+            this.rect= new Phaser.Geom.Rectangle(64, 32, 100, 512);
+
+         patt = this.physics.add.group({ key: 'balls', frame: [0,1,2,3,4,5], frameQuantity: 1 });
+        this.tweens.add({
+            targets: this.rect,
+            x: x,
+            y: y,
+            width: 512,
+            height: 100,
+            delay: 4000,
+            duration: 3000,
+            ease: 'Sine.easeInOut',
+            repeat: -1,
+            yoyo: true
+        });
+
+
+                const circle = new Phaser.Geom.Circle(100, y, x);
+        pattCircleJr = this.physics.add.group({ key: 'ball', frameQuantity: 2 });
+
+        Phaser.Actions.PlaceOnCircle(pattCircleJr.getChildren(), circle);
+
+        /*this.tween*/patCirTween = this.tweens.addCounter({
+            from: 200,
+            to: 0,
+            duration: 4000,
+            delay: 3000,
+            ease: 'Sine.easeInOut',
+            repeat: -1,
+            yoyo: true
+        });
+    this.physics.add.collider(player, patt, hitBomb, null, this);
+    this.physics.add.collider(player, pattCircleJr, hitBomb, null, this);
 }
 
 function update ()
@@ -204,6 +310,18 @@ function update ()
     }
 
     
+
+        Phaser.Actions.PlaceOnRectangle(patt.getChildren(), this.rect, this.i);
+
+        this.i++;
+        if (this.i === this.group.length)
+        {
+            this.i = 0;
+        }
+   
+
+
+        Phaser.Actions.RotateAroundDistance(pattCircleJr.getChildren(), { x: x, y: y }, 0.02, patCirTween.getValue());
 }
 
 function collectStar (player, star)
@@ -214,8 +332,8 @@ function collectStar (player, star)
     score += 1;
     scoreText.setText('Score: ' + score);
     x = numeroAleatorioDecimales(50,750);
-    y = numeroAleatorioDecimales(50,550);
-      
+    y = numeroAleatorioDecimales(50, 550);
+
       star.x = x;
       star.y = y;
    // if (stars.countActive(true) === 0)
@@ -227,26 +345,29 @@ function collectStar (player, star)
 
        // });
 
-        var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+     /*   var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
         var bomb = bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
         bomb.setCollideWorldBounds(true);
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        bomb.allowGravity = false;
+        bomb.allowGravity = false;*/
 
    // }
 }
 
 function hitBomb (player, bomb)
 {
-    this.physics.pause();
+    //this.physics.pause();
 
-    player.setTint(0xff0000);
+   // player.setTint(0xff0000);
 
-    player.anims.play('turn');
+   // player.anims.play('turn');
 
-    gameOver = true;
+    //gameOver = true;
+    this.registry.destroy(); // destroy registry
+    this.events.off();﻿ // disable all active events
+    this.scene.restart();﻿﻿﻿ // restart current scene
 }
 
 </script>
